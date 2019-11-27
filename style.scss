@@ -58,9 +58,3 @@ body{
     .transition{
         transition: .6s;
     }
-    .opened>.wrap{
-        top: 0;
-    }
-    .closed>.wrap{
-        top: -$openBannerHeight;
-    }

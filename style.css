@@ -60,12 +60,4 @@ body {
   -webkit-transition: .6s;
   transition: .6s;
 }
-
-.opened > .wrap {
-  top: 0;
-}
-
-.closed > .wrap {
-  top: -300px;
-}
 /*# sourceMappingURL=style.css.map */
