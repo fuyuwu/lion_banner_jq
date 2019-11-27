@@ -39,13 +39,34 @@
     //開始寫function
     Module.prototype.toggle = function () {
         if (this.$ele.hasClass(this.options.class.opened)) {
-            console.log("opened")
+            console.log("closed")
             this.close();
         } else if (this.$ele.hasClass(this.options.class.closed)) {
-            console.log("closed")
+            console.log("opened")
             this.open();
         }
     };
+
+    //初始值
+    Module.prototype.init = function () {
+        this.$ele.append(this.$btn); //新增btn
+        var openAtStart = this.options.openAtStart;
+        //畫面呈現是否先開
+        if (this.options.autoToggle === false) {
+            //autoToggle :false --> 不自動開合
+            if (openAtStart) {
+                this.open();//自動開合,btn收合
+            } else {
+                this.close();
+            }
+        } else if (this.options.autoToggle === true) {
+            if (openAtStart) {
+                this.close();
+            } else {
+                this.open();
+            }
+        }
+    }
 
     //設定各個狀態
     Module.prototype.open = function () {
@@ -120,27 +141,7 @@
                 }, this.options.autoToggle);
         }
     }
-    //初始值
-    Module.prototype.init = function () {
-        this.$ele.append(this.$btn); //新增btn
-        var openAtStart = this.options.openAtStart;
-        //畫面呈現是否先開
-        if (this.options.autoToggle === false) {
-            //autoToggle :false --> 不自動開合
-            if (openAtStart) {
-                this.open();//自動開合,btn收合
-            } else {
-                this.close();
-            }
-        } else if (this.options.autoToggle === true) {
-            if (openAtStart) {
-                console.log("是close");
-                this.close();
-            } else {
-                this.open();
-            }
-        }
-    }
+
 
 
 
@@ -155,7 +156,7 @@
             // 判斷裡面打 $('.banner').banner('close')是否會立即執行  
             if (!!module) {
                 if (typeof option === 'string') {
-                    // console.log('option是', option) //open,close
+                    // console.log('option是', option) //open or close
                     module[option]();
                 } else {
                     console.log('unsupported option!');
@@ -166,14 +167,14 @@
                 opts = $.extend({}, Module.DEFAULT, typeof option === 'object' && option);
                 module = new Module(this, opts);
                 $this.data(ModuleName, module); //.data(key,value)
-                module.init(); //執行初始值
+                module.init();
 
                 module.$btn.on('click', function () {
                     module.toggle();
                 });
 
-                module.openAtStart(); //執行openAtStart
-                module.autoToggle(); //執行autoToggle
+                module.openAtStart();
+                module.autoToggle();
             }
         });
     };
