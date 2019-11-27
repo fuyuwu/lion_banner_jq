@@ -1,2 +1,2 @@
-# lion_banner_jq
+# lion_banner_jquery
 
