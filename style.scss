@@ -1,0 +1,66 @@
+$bannerWidth:1200px;
+$relative:relative;
+$absolute:absolute;
+$openBannerHeight:300px;
+$closeBannerHeight:40px;
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.banner{
+    max-width: $bannerWidth;
+    height: $openBannerHeight;
+    overflow: hidden;
+    position: $relative;
+    margin: auto;
+    >.wrap{
+        width: $bannerWidth;
+        height: 100%;
+        display: block;
+        position: $absolute;
+    }
+    .btn {
+        line-height: 23px;
+        position: $absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        border-radius: 5px 0 0 0;
+        font-size: 13px;
+        text-align: center;
+        padding: 2px 2px 2px 8px;
+        color:rgba($color: #ffffff, $alpha: .8);
+        background:black;
+        cursor: pointer;
+        i.fa-sort-up{
+            vertical-align: bottom;
+        }
+
+        &:hover{
+            color: #ffffff;
+        }
+        &:after {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin: 3px;
+          }
+    }
+}
+    .opened, .opening{
+        height: $openBannerHeight;
+    }
+
+    .closed, .closing{
+        height: $closeBannerHeight;
+    }
+    .transition{
+        transition: .6s;
+    }
+    .opened>.wrap{
+        top: 0;
+    }
+    .closed>.wrap{
+        top: -$openBannerHeight;
+    }

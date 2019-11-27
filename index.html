@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Banner練習-jq</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/371f9b83d2.js" crossorigin="anonymous"></script>
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/module.js"></script>
+
+</head>
+
+<body>
+    <div class="banner">
+        <a class="wrap" href="javascript:;">
+            <img class="img" src="./imgs/1200x380.png" title="輸入廣告促銷說明文字" alt="輸入廣告促銷說明文字">
+        </a>
+    </div>
+
+    <script>
+
+        $('.banner').banner({
+            openAtStart: true,
+            autoToggle: true,
+            class: {
+                closed: 'closed',
+                closing: 'closing',
+                opened: 'opened',
+                opening: 'opening'
+            },
+            transition: 600,
+            whenTransition: function () {
+                console.log('whenTransition'); //30
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
