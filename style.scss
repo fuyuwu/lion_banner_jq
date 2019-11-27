@@ -1,15 +1,15 @@
 $bannerWidth:1200px;
 $relative:relative;
 $absolute:absolute;
-$openBannerHeight:300px;
-$closeBannerHeight:40px;
+$openHeight:300px;
+$closeHeight:40px;
 
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
 .banner{
     max-width: $bannerWidth;
-    height: $openBannerHeight;
+    height: $openHeight;
     overflow: hidden;
     position: $relative;
     margin: auto;
@@ -49,11 +49,14 @@ body{
     }
 }
     .opened, .opening{
-        height: $openBannerHeight;
+        height: $openHeight;
+    }
+    .closed >.wrap{
+        top: -$openHeight;
     }
 
     .closed, .closing{
-        height: $closeBannerHeight;
+        height: $closeHeight;
     }
     .transition{
         transition: .6s;
