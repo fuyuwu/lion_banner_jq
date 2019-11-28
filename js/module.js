@@ -39,11 +39,11 @@
   //開始寫function
   Module.prototype.toggle = function () {
     if (this.$ele.hasClass(this.options.class.opened)) {
-      console.log("closed")
+      // console.log("closed")
       this.close();
       this.$ele.addClass('closed');
     } else if (this.$ele.hasClass(this.options.class.closed)) {
-      console.log("opened")
+      // console.log("opened")
       this.open();
       this.$ele.addClass('opened');
     }
@@ -98,7 +98,7 @@
     if (opts.transition && this.$ele.hasClass(opts.class.opened)) {
       this.whenTrans(); //啟動setInterval
       timer = this.timer;
-      this.$ele.addClass('transition').removeClass(opts.class.opened).addClass(opts.class.closing).addClass('closing');
+      this.$ele.addClass('transition').removeClass(opts.class.opened).removeClass('opened').addClass(opts.class.closing).addClass('closing');
       this.$ele.on("transitionend webkitTransitionEnd oTransitionEnd",
         function () {
           $(this).removeClass(opts.class.closing).removeClass('closing').removeClass(opts.class.opened).removeClass('opened').addClass(opts.class.closed).addClass('closed');
