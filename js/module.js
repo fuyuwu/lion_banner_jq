@@ -165,6 +165,7 @@
             } else {
                 //=>js: object.assign()
                 opts = $.extend({}, Module.DEFAULT, typeof option === 'object' && option);
+                // console.log("option:" + option)//[object object]
                 module = new Module(this, opts);
                 $this.data(ModuleName, module); //.data(key,value)
                 module.init();
