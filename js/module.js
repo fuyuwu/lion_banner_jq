@@ -80,7 +80,7 @@
       this.whenTrans(); //啟動setInterval
       timer = this.timer;
 
-      this.$ele.addClass('transition').removeClass(opts.class.closed).removeClass('closed').addClass(opts.class.opening).addClass('opened');
+      this.$ele.addClass('transition').removeClass(opts.class.closed).removeClass('closed').addClass(opts.class.opening).addClass('opening');
       this.$ele.on("transitionend webkitTransitionEnd oTransitionEnd",
         function () {
           $(this).removeClass(opts.class.opening).removeClass('opening').removeClass(opts.class.closed).removeClass('closed').addClass(opts.class.opened).addClass('opened');
@@ -98,7 +98,8 @@
     if (opts.transition && this.$ele.hasClass(opts.class.opened)) {
       this.whenTrans(); //啟動setInterval
       timer = this.timer;
-      this.$ele.addClass('transition').removeClass(opts.class.opened).addClass(opts.class.closing).addClass('closing');
+
+      this.$ele.addClass('transition').removeClass(opts.class.opened).removeClass('opened').addClass(opts.class.closing).addClass('closing');
       this.$ele.on("transitionend webkitTransitionEnd oTransitionEnd",
         function () {
           $(this).removeClass(opts.class.closing).removeClass('closing').removeClass(opts.class.opened).removeClass('opened').addClass(opts.class.closed).addClass('closed');
