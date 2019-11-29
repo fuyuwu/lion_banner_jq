@@ -38,10 +38,10 @@
 
     //開始寫function
     Module.prototype.toggle = function () {
-        if (this.$ele.hasClass(this.options.class.opened)) {
+        if (this.$ele.hasClass('opened')) {
             console.log("closed")
             this.close();
-        } else if (this.$ele.hasClass(this.options.class.closed)) {
+        } else if (this.$ele.hasClass('closed')) {
             console.log("opened")
             this.open();
         }
@@ -74,18 +74,18 @@
         var timer;
         // console.log(opts.button.closeText);//收合
         this.$btn.text(opts.button.closeText).append(this.$up);
-        if (opts.transition && this.$ele.hasClass(opts.class.closed)) {
+        if (opts.transition && this.$ele.hasClass('closed')) {
             this.whenTrans(); //啟動setInterval
             timer = this.timer;
 
-            this.$ele.addClass('transition').removeClass(opts.class.closed).addClass(opts.class.opening);
+            this.$ele.addClass('transition').removeClass(opts.class.closed).removeClass('closed').addClass(opts.class.opening).addClass('opening');
             this.$ele.on("transitionend webkitTransitionEnd oTransitionEnd",
                 function () {
-                    $(this).removeClass(opts.class.opening).removeClass(opts.class.closed).addClass(opts.class.opened);
+                    $(this).removeClass(opts.class.opening).removeClass('opening').removeClass(opts.class.closed).removeClass('closed').addClass(opts.class.opened).addClass('opened');
                     Module.prototype.clearTimer(timer);
                 });
         } else {
-            this.$ele.removeClass(opts.class.closed).addClass(opts.class.opened);
+            this.$ele.removeClass(opts.class.closed).removeClass('closed').addClass(opts.class.opened).addClass('opened');
         }
     }
 
@@ -93,17 +93,17 @@
         var opts = this.options;
         var timer;
         this.$btn.text(opts.button.openText).append(this.$down);
-        if (opts.transition && this.$ele.hasClass(opts.class.opened)) {
+        if (opts.transition && this.$ele.hasClass('opened')) {
             this.whenTrans(); //啟動setInterval
             timer = this.timer;
-            this.$ele.addClass('transition').removeClass(opts.class.opened).addClass(opts.class.closing);
+            this.$ele.addClass('transition').removeClass(opts.class.opened).removeClass('opened').addClass(opts.class.closing).addClass('closing');
             this.$ele.on("transitionend webkitTransitionEnd oTransitionEnd",
                 function () {
-                    $(this).removeClass(opts.class.closing).removeClass(opts.class.opened).addClass(opts.class.closed);
+                    $(this).removeClass(opts.class.closing).removeClass('closing').removeClass(opts.class.opened).removeClass('opened').addClass(opts.class.closed).addClass('closed');
                     Module.prototype.clearTimer(timer);
                 });
         } else {
-            this.$ele.removeClass(opts.class.opened).addClass(opts.class.closed);
+            this.$ele.removeClass(opts.class.opened).removeClass('opened').addClass(opts.class.closed).addClass('closed');
         }
     }
     Module.prototype.whenTrans = function () {
@@ -129,9 +129,9 @@
         // console.log(this.options.autoToggle);//true
         if (typeof this.options.autoToggle === "boolean") {
             if (this.options.autoToggle === true) {
-                this.$ele.removeClass(this.options.class.opened).addClass(this.options.class.closed);
+                this.$ele.removeClass(this.options.class.opened).removeClass('opened').addClass(this.options.class.closed).addClass('closed');
             } else if (this.options.autoToggle === false) {
-                this.$ele.removeClass(this.options.class.closed).addClass(this.options.class.opened);
+                this.$ele.removeClass(this.options.class.closed).removeClass('closed').addClass(this.options.class.opened).addClass('opened');
             }
 
         } else if (typeof this.options.autoToggle === "number") {
