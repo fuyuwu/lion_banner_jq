@@ -95,7 +95,7 @@
     var opts = this.options;
     var timer;
     this.$btn.text(opts.button.openText).append(this.$down);
-    if (opts.transition && this.$ele.hasClass(opts.class.opened)) {
+    if (opts.transition && this.$ele.addClass('opened')) {
       this.whenTrans(); //啟動setInterval
       timer = this.timer;
       this.$ele.addClass('transition').removeClass(opts.class.opened).addClass(opts.class.closing).addClass('closing');
