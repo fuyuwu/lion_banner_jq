@@ -50,22 +50,6 @@
   //初始值
   Module.prototype.init = function() {
     this.$ele.append(this.$btn); //新增btn
-    var openAtStart = this.options.openAtStart;
-    //畫面呈現是否先開
-    if (this.options.autoToggle === false) {
-      //autoToggle :false --> 不自動開合
-      if (openAtStart) {
-        this.open(); //自動開合,btn收合
-      } else {
-        this.close();
-      }
-    } else if (this.options.autoToggle === true) {
-      if (openAtStart) {
-        this.close();
-      } else {
-        this.open();
-      }
-    }
   };
 
   //設定各個狀態
